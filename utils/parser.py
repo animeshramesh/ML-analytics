@@ -5,7 +5,7 @@ import csv
 def parse_csv(path_to_csv):
     csv_file = open(path_to_csv, 'rb')
     reader = csv.reader(csv_file, delimiter='\t')
-    precipitation_details = {}
+    details = {}
     for row in reader:  # iterates the rows of the file in orders
         if len(row) < 1:  # remove first row from csv file
             continue
@@ -13,8 +13,8 @@ def parse_csv(path_to_csv):
             continue
         year = row[0]
         del row[0]
-        precipitation_details[year] = row
-    return precipitation_details
+        details[year] = row
+    return details
 
 
 def get_monthly_data(precipitation, start_year, end_year, month):
